@@ -14,6 +14,26 @@
 
 - Addon Firefox/Chrome RESTED para poder probar la API fácilmente
 
+## Problemas comunes
+### Error de timeout con cloud mongo.
+En la interfaz cloud de mongo, debes añadir 0.0.0.0/0 a la lista de WhiteList para poder conectar o, en su defecto, la IP desde la que desees conectar a la bbdd.
+
+### Usuario no encontrado al hacer login
+1. Asegúrate que en el archivo bbdd_conf tienes correctamente especificada tu base de datos.
+2. Las colecciones base de la API deben estar definidos en mongocloud (creados) exactamente con los siguientes nombres:
+    - messages
+    - users
+En plural y en minúscula.
+3. Debes tener un usuario registrado en tu base de datos (de forma manual).
+4. Los usuarios siguen el esquema que puedes encontrar en models/user.js
+    {"name":"Usuario","email":"usuario@test.com","pHash":"12345","image":""}
+
+### No sé cómo hacer login.
+1. Descarga una herramienta como RESTED o POSTMAN que te permita hacer peticiones HTTP.
+2. POST http://localhost:3800/api/login
+3. Headers tienes que añadir: Content-type: application/json
+4. En el body de la petición: {"name":"Usuario","pHash":"12345"}
+
 ## Añadir nuevos modelos
 
 Para añadir modelos hay que realizar el siguiente proceso:
