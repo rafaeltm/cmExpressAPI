@@ -15,7 +15,7 @@ var mdl_auth = require('../middlewares/auth');
 // Creamos una ruta para los métodos que tenemos en nuestros controladores
 // Esta ruta recibe un parametro ID y es necesario que vaya autenticada
 api.get('/user/:id', mdl_auth.ensureAuth, UserController.getUser);
-api.post('/user', mdl_auth.ensureAuth, UserController.postUser);
+api.post('/user', UserController.postUser);
 // api.put('/user/:id', mdl_auth.ensureAuth, UserController.putUser);
 // api.delete('/user/:id', mdl_auth.ensureAuth, UserController.delUser);
 

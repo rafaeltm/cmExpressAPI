@@ -42,9 +42,7 @@ exports.postUser = function (req, res) {
                     error: 'Server error'
                 });
             } else {
-                res.status(201).send({
-                    newUser
-                })
+                res.status(201).json(newUser)
             }
         })
     }
